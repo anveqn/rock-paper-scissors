@@ -12,7 +12,12 @@ let getComputerChoice = () => {
             finalChoice = "Scissors";
             break;         
     }
-    console.log(finalChoice);
+    return finalChoice;
+};
+
+let getHumanChoice = () => {
+    let human = prompt("Make your choice.").toLowerCase();
 }
 
-getComputerChoice();
+let humanScore = 0;
+let computerScore = 0;
