@@ -73,16 +73,49 @@ const scoreMessage = () => {
     score.textContent = `Total score YOU ${humanScore} - ${computerScore} CPU`;
 };
 
+const humanWon = () => {
+    cpuResult.textContent = "GAME IS OVER!";
+    roundResult.textContent = "YOU WON!";
+    score.textContent = `Final score: YOU ${humanScore} - ${computerScore} CPU`;
+    humanScore = 0;
+    computerScore = 0;
+}
+
+const cpuWon = () => {
+    cpuResult.textContent = "GAME IS OVER!";
+    roundResult.textContent = "YOU LOST...";
+    score.textContent = `Final score: YOU ${humanScore} - ${computerScore} CPU`;
+    humanScore = 0;
+    computerScore = 0;
+}
 
 rock.addEventListener("click", () => {
     playRound("rock", getComputerChoice());
-    scoreMessage();
+    if(humanScore===5){
+        humanWon();
+    } else if(computerScore===5){
+        cpuWon();
+    } else {
+        scoreMessage();
+    };
 });
 paper.addEventListener("click", () => {
     playRound("paper", getComputerChoice());
-    scoreMessage();
+    if(humanScore===5){
+        humanWon();
+    } else if(computerScore===5){
+        cpuWon();
+    } else {
+        scoreMessage();
+    };
 });
 scissors.addEventListener("click", () => {
     playRound("scissors", getComputerChoice());
-    scoreMessage();
+    if(humanScore===5){
+        humanWon();
+    } else if(computerScore===5){
+        cpuWon();
+    } else {
+        scoreMessage();
+    };
 });
