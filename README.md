@@ -1,2 +1,2 @@
 # rock-paper-scissors
-Console based game of Rock Paper Scissors.
+A game of rock paper scissors with a simple UI.
