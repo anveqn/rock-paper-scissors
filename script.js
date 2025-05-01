@@ -15,16 +15,10 @@ let getComputerChoice = () => {
     return finalChoice;
 };
 
-let getHumanChoice = () => {
-    let human = prompt("Make your choice!").toLowerCase();
-    return human;
-};
-
-const playGame = () => {
-    let humanScore = 0;
-    let computerScore = 0;
+let humanScore = 0;
+let computerScore = 0;
     
-    let playRound = (humanChoice, computerChoice) => {
+let playRound = (humanChoice, computerChoice) => {
         switch (humanChoice){
             case "rock":
                 if (computerChoice==="scissors"){
@@ -60,26 +54,12 @@ const playGame = () => {
                 };
                 break;
         }
-    };
-
-    while (humanScore<5 && computerScore<5){
-        let humanSelection = getHumanChoice();
-        let computerSelection = getComputerChoice();
-        console.log(`Your choice is ${humanSelection}. Computer's choice is ${computerSelection}`);
-        playRound(humanSelection, computerSelection);
-        console.log(`Current score: You ${humanScore} - ${computerScore} CPU`);
-        console.log(" ");
-    }
-
-    if(humanScore == 5){
-        console.log(`Game is over! You won! Final Score: You ${humanScore} - ${computerScore} CPU`);
-        humanScore = 0;
-        computerScore = 0;
-    } else if (computerScore == 5){
-        console.log(`Game is over! You lost... Final Score: You ${humanScore} - ${computerScore} CPU`);
-        humanScore = 0;
-        computerScore = 0;
-    }
 };
 
-playGame();
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+
+rock.addEventListener("click", () => {playRound("rock", getComputerChoice());});
+paper.addEventListener("click", () => {playRound("paper", getComputerChoice());});
+scissors.addEventListener("click", () => {playRound("scissors", getComputerChoice());});
