@@ -1,19 +1,26 @@
+const cpuResult = document.querySelector("#cpu-choice");
+
 let getComputerChoice = () => {
     let randomChoice = Math.floor(Math.random() * 3);
     let finalChoice;
     switch (randomChoice) {
         case 0:
             finalChoice = "rock";
+            cpuResult.textContent = "CPU chose Rock";
             break;
         case 1:
             finalChoice = "paper";
+            cpuResult.textContent = "CPU chose Paper";
             break;
         case 2:
             finalChoice = "scissors";
+            cpuResult.textContent = "CPU chose Scissors";
             break;         
     }
     return finalChoice;
 };
+
+const roundResult = document.querySelector("#round-result");
 
 let humanScore = 0;
 let computerScore = 0;
@@ -22,35 +29,35 @@ let playRound = (humanChoice, computerChoice) => {
         switch (humanChoice){
             case "rock":
                 if (computerChoice==="scissors"){
-                    console.log("You win! Rock beats Scissors");
+                    roundResult.textContent = "You win! Rock beats Scissors";
                     humanScore++;
                 } else if (computerChoice==="paper"){
-                    console.log("You lose, Paper beats Rock");
+                    roundResult.textContent = "You lose, Paper beats Rock";
                     computerScore++;
                 }else {
-                    console.log("It's a draw! No points gained.")
+                    roundResult.textContent = "It's a draw! No points gained.";
                 };
                 break;
             case "paper":
                 if (computerChoice==="rock"){
-                    console.log("You win! Paper beats Rock");
+                    roundResult.textContent = "You win! Paper beats Rock";
                     humanScore++;
                 } else if (computerChoice==="scissors"){
-                    console.log("You lose, Scissors beat Paper");
+                    roundResult.textContent = "You lose, Scissors beat Paper";
                     computerScore++;
                 }else {
-                    console.log("It's a draw! No points gained.")
+                    roundResult.textContent = "It's a draw! No points gained.";
                 };
                 break;
             case "scissors":
                 if (computerChoice==="paper"){
-                    console.log("You win! Scissors beat Paper");
+                    roundResult.textContent = "You win! Scissors beat Paper";
                     humanScore++;
                 } else if (computerChoice==="rock"){
-                    console.log("You lose, Rock beats Scissors");
+                    roundResult.textContent = "You lose, Rock beats Scissors";
                     computerScore++;
                 }else {
-                    console.log("It's a draw! No points gained.")
+                    roundResult.textContent = "It's a draw! No points gained.";
                 };
                 break;
         }
@@ -59,7 +66,23 @@ let playRound = (humanChoice, computerChoice) => {
 const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
+const buttons = document.querySelectorAll("button");
+const score = document.querySelector("#score");
 
-rock.addEventListener("click", () => {playRound("rock", getComputerChoice());});
-paper.addEventListener("click", () => {playRound("paper", getComputerChoice());});
-scissors.addEventListener("click", () => {playRound("scissors", getComputerChoice());});
+const scoreMessage = () => {
+    score.textContent = `Total score YOU ${humanScore} - ${computerScore} CPU`;
+};
+
+
+rock.addEventListener("click", () => {
+    playRound("rock", getComputerChoice());
+    scoreMessage();
+});
+paper.addEventListener("click", () => {
+    playRound("paper", getComputerChoice());
+    scoreMessage();
+});
+scissors.addEventListener("click", () => {
+    playRound("scissors", getComputerChoice());
+    scoreMessage();
+});
